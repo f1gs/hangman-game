@@ -192,7 +192,7 @@ while recomecar == str('s'):
         print('Erro: %d' % erros if erros < 2 else 'Erros: %d' % erros)
 
         # Entrada do jogador
-        jogador = input(str('\nSua vez, digite uma letra: ')).upper().strip()
+        jogador = input(str('\nSua vez, digite uma letra: ')).upper().strip()[0]
 
         # Revela letras com hífen e substitui o underline pelas letras que foram adivinhadas pelo jogador
         for i in range(len(computador)):
