@@ -234,8 +234,6 @@ while recomecar == 's':
     print(cabecalho)
     print('Palavra disponível: %d' % len(palavra) if len(palavra) < 2 else 'Palavras disponíveis: %d' % len(palavra))
 
-    # print('')
-
     # Desenho da forca
     if erros == 0:
         print(forca0)
