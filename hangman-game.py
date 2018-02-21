@@ -104,6 +104,7 @@ forca7 = str('''                                                     +---------+
 
 recomecar = str('s')
 
+# Loop para recomeçar o jogo
 while recomecar == str('s'):
 
     # Variáveis globais
@@ -129,7 +130,7 @@ while recomecar == str('s'):
             hifens += 1
     total_letras = len(computador) - hifens
 
-    # Ocultador de letras e revelendo hífens
+    # Ocultador de letras e revelador de hífens
     for i in range(len(mostrar)):
         mostrar[i] = str('_')
     for i in range(len(computador)):
@@ -144,14 +145,14 @@ while recomecar == str('s'):
         # Início da 'Interface' do jogo #
         #################################
 
+        # Limpador de tela
         os.system('cls' if os.name == 'nt' else 'clear')
 
         print(cabecalho)
         print('Palavra disponível: %d' % len(palavra) if len(palavra) < 2 else 'Palavras disponíveis: %d' % len(palavra))
+
         # Apenas para testes
         # print('[ TESTE ] - Computador:', str(computador))
-
-        # print('')
 
         # Desenho da forca
         if erros == 0:
@@ -173,6 +174,7 @@ while recomecar == str('s'):
 
         print('')
 
+        # Separador
         print('   '.join(mostrar).center(120))
 
         print('')
@@ -182,10 +184,6 @@ while recomecar == str('s'):
 
         # Letras usadas pelo jogador
         print('Letra usada: %s' % str(jogador_lista).strip('[]') if len(jogador_lista) < 2 else 'Letras usadas: %s' % str(jogador_lista).strip('[]'))
-
-        # print('')
-
-        # print('Tentativa: %d\nVida: %d\nAcerto: %d\nErro: %d' % (tentativas, vidas, acertos, erros))
 
         # Status do jogo
         print('Tentativa: %d' % tentativas if tentativas < 2 else 'Tentativas: %d' % tentativas)
@@ -229,7 +227,11 @@ while recomecar == str('s'):
             vidas -= 1
             erros += 1
 
-    # Mensagem final
+    #######################
+    # Tela de fim de jogo #
+    #######################
+
+    # Limpa a tela
     os.system('cls' if os.name == 'nt' else 'clear')
 
     print(cabecalho)
@@ -257,6 +259,7 @@ while recomecar == str('s'):
 
     print('')
 
+    # Separador
     print('   '.join(mostrar).center(120))
 
     print('')
@@ -281,9 +284,11 @@ while recomecar == str('s'):
         if computador[i] in jogador:
             mostrar[i] = str(jogador)[0]
 
+    # Mensagem de vitória ou derrota
     if vidas != 0 and acertos == total_letras:
         print('\nParabéns! Você ganhou! :-)')
     else:
         print('\nA palavra era %s. Você perdeu! :-(' % sorteada)
 
+    # Recomeça o jogo
     recomecar = str(input('\nDeseja recomeçar? [S/N]')).lower().strip()
