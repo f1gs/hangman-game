@@ -22,7 +22,7 @@ This game is in Portuguese (Brazil) language.
 ### Added
 - New game screenshot.
 ### Fixed
-- Fixe a bug that allows multiple characters to be entered at the same time.
+- Fix a bug that allows multiple characters to be entered at the same time.
 ### Changed
 - Minor improvements in the code.
 
