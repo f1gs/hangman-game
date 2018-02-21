@@ -1,4 +1,5 @@
 '''
+Made in Python 3.6.4
 Jogo da forca (Hangman Game)
 Versão: 1.00
 Atualizado em: 20/02/18 (dd/mm/yy)
@@ -10,7 +11,7 @@ import random
 import os
 
 # Cabeçalho
-cabecalho = str('''+======================================================================================================================+
+cabecalho = ('''+======================================================================================================================+
 |                             __                         __         ______                                             |
 |                            / /___  ____ _____     ____/ /___ _   / ____/___  ______________ _                        |
 |                       __  / / __ \/ __ `/ __ \   / __  / __ `/  / /_  / __ \/ ___/ ___/ __ `/                        |
@@ -22,7 +23,7 @@ cabecalho = str('''+============================================================
 +======================================================================================================================+''')
 
 # Desenhos da forca
-forca0 = str('''                                                     +---------+
+forca0 = ('''                                                     +---------+
                                                      |         |
                                                                |
                                                                |
@@ -32,7 +33,7 @@ forca0 = str('''                                                     +---------+
                                                                |
                                                     -----------+''')
 
-forca1 = str('''                                                     +---------+
+forca1 = ('''                                                     +---------+
                                                      |         |
                                                      0         |
                                                                |
@@ -42,7 +43,7 @@ forca1 = str('''                                                     +---------+
                                                                |
                                                     -----------+''')
 
-forca2 = str('''                                                     +---------+
+forca2 = ('''                                                     +---------+
                                                      |         |
                                                      0         |
                                                      |         |
@@ -52,7 +53,7 @@ forca2 = str('''                                                     +---------+
                                                                |
                                                     -----------+''')
 
-forca3 = str('''                                                     +---------+
+forca3 = ('''                                                     +---------+
                                                      |         |
                                                      0         |
                                                     /|         |
@@ -62,7 +63,7 @@ forca3 = str('''                                                     +---------+
                                                                |
                                                     -----------+''')
 
-forca4 = str('''                                                     +---------+
+forca4 = ('''                                                     +---------+
                                                      |         |
                                                      0         |
                                                     /|\        |
@@ -72,7 +73,7 @@ forca4 = str('''                                                     +---------+
                                                                |
                                                     -----------+''')
 
-forca5 = str('''                                                     +---------+
+forca5 = ('''                                                     +---------+
                                                      |         |
                                                      0         |
                                                     /|\        |
@@ -82,7 +83,7 @@ forca5 = str('''                                                     +---------+
                                                                |
                                                     -----------+''')
 
-forca6 = str('''                                                     +---------+
+forca6 = ('''                                                     +---------+
                                                      |         |
                                                      0         |
                                                     /|\        |
@@ -92,7 +93,7 @@ forca6 = str('''                                                     +---------+
                                                                |
                                                     -----------+''')
 
-forca7 = str('''                                                     +---------+
+forca7 = ('''                                                     +---------+
                                                      |         |
                                                      0         |
                                                     /|\        |
@@ -102,20 +103,20 @@ forca7 = str('''                                                     +---------+
                                                                |
                                                     -----------+''')
 
-recomecar = str('s')
+recomecar = 's'
 
 # Loop para recomeçar o jogo
-while recomecar == str('s'):
+while recomecar == 's':
 
     # Variáveis globais
-    hifens = erros = acertos = int(0)
-    tentativas = int(1)
-    vidas = int(7)
+    hifens = erros = acertos = 0
+    tentativas = 1
+    vidas = 7
 
     # Busca uma palavra aleatória e a separa
     palavra = open('words.txt', 'r').readlines()
     computador = random.choice(palavra)
-    computador = str(computador).upper().strip()
+    computador = computador.upper().strip()
     sorteada = computador
     computador = list(computador)
 
@@ -126,17 +127,17 @@ while recomecar == str('s'):
 
     # Mostra o número de letras levando em consideração os hífens
     for i in range(len(computador)):
-        if computador[i] in str('-'):
+        if computador[i] in '-':
             hifens += 1
     total_letras = len(computador) - hifens
 
     # Ocultador de letras e revelador de hífens
     for i in range(len(mostrar)):
-        mostrar[i] = str('_')
+        mostrar[i] = '_'
     for i in range(len(computador)):
-        if computador[i] in str('-'):
-            mostrar[i] = str('-')
-            jogador_lista.append(str('-'))
+        if computador[i] in '-':
+            mostrar[i] = '-'
+            jogador_lista.append('-')
 
     # Loop até o jogador errar ou acertar tudo
     while vidas != 0 and acertos != total_letras:
@@ -152,7 +153,7 @@ while recomecar == str('s'):
         print('Palavra disponível: %d' % len(palavra) if len(palavra) < 2 else 'Palavras disponíveis: %d' % len(palavra))
 
         # Apenas para testes
-        # print('[ TESTE ] - Computador:', str(computador))
+        # print('[ TESTE ] - Computador:' % (computador))
 
         # Desenho da forca
         if erros == 0:
@@ -179,28 +180,24 @@ while recomecar == str('s'):
 
         print('')
 
-        # Total de letras na palavra
-        print('Palavra com %d letra' % total_letras if total_letras < 2 else 'Palavra com %d letras' % total_letras)
-
-        # Letras usadas pelo jogador
-        print('Letra usada: %s' % str(jogador_lista).strip('[]') if len(jogador_lista) < 2 else 'Letras usadas: %s' % str(jogador_lista).strip('[]'))
-
         # Status do jogo
+        print('Palavra com %d letra' % total_letras if total_letras < 2 else 'Palavra com %d letras' % total_letras)
+        print('Letra usada: %s' % str(jogador_lista).strip('[]') if len(jogador_lista) < 2 else 'Letras usadas: %s' % str(jogador_lista).strip('[]'))
         print('Tentativa: %d' % tentativas if tentativas < 2 else 'Tentativas: %d' % tentativas)
         print('Vida: %d' % vidas if vidas < 2 else 'Vidas: %d' % vidas)
         print('Acerto: %d' % acertos if acertos < 2 else 'Acertos: %d' % acertos)
         print('Erro: %d' % erros if erros < 2 else 'Erros: %d' % erros)
 
         # Entrada do jogador
-        jogador = input(str('\nSua vez, digite uma letra: ')).upper().strip()[0]
+        jogador = input('\nSua vez, digite uma letra: ').upper().strip()[0]
 
         # Revela letras com hífen e substitui o underline pelas letras que foram adivinhadas pelo jogador
         for i in range(len(computador)):
-            if computador[i] in str('-'):
-                mostrar[i] = str('-')
+            if computador[i] in '-':
+                mostrar[i] = '-'
         for i in range(len(computador)):
             if computador[i] in jogador:
-                mostrar[i] = str(jogador)[0]
+                mostrar[i] = jogador[0]
 
         # Verificador de acertos ou erros
         if jogador in str('[^-0123456789áéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ: ]'):
@@ -264,13 +261,9 @@ while recomecar == str('s'):
 
     print('')
 
-    # Total de letras na palavra
-    print('Palavra com %d letra' % total_letras if total_letras < 2 else 'Palavra com %d letras' % total_letras)
-
-    # Letras usadas pelo jogador
-    print('Letra usada: %s' % str(jogador_lista).strip('[]') if len(jogador_lista) < 2 else 'Letras usadas: %s' % str(jogador_lista).strip('[]'))
-
     # Status do jogo
+    print('Palavra com %d letra' % total_letras if total_letras < 2 else 'Palavra com %d letras' % total_letras)
+    print('Letra usada: %s' % str(jogador_lista).strip('[]') if len(jogador_lista) < 2 else 'Letras usadas: %s' % str(jogador_lista).strip('[]'))
     print('Tentativa: %d' % tentativas if tentativas < 2 else 'Tentativas: %d' % tentativas)
     print('Vida: %d' % vidas if vidas < 2 else 'Vidas: %d' % vidas)
     print('Acerto: %d' % acertos if acertos < 2 else 'Acertos: %d' % acertos)
@@ -278,11 +271,11 @@ while recomecar == str('s'):
 
     # Revela letras com hífen e substitui o underline pelas letras que foram adivinhadas pelo jogador
     for i in range(len(computador)):
-        if computador[i] in str('-'):
-            mostrar[i] = str('-')
+        if computador[i] in '-':
+            mostrar[i] = '-'
     for i in range(len(computador)):
         if computador[i] in jogador:
-            mostrar[i] = str(jogador)[0]
+            mostrar[i] = jogador[0]
 
     # Mensagem de vitória ou derrota
     if vidas != 0 and acertos == total_letras:
@@ -291,4 +284,4 @@ while recomecar == str('s'):
         print('\nA palavra era %s. Você perdeu! :-(' % sorteada)
 
     # Recomeça o jogo
-    recomecar = str(input('\nDeseja recomeçar? [S/N]')).lower().strip()
+    recomecar = input('\nDeseja recomeçar? [S/N]').lower().strip()
