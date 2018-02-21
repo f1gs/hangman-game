@@ -1,9 +1,10 @@
 '''
 Made in Python 3.6.4
-Jogo da forca (Hangman Game)
-Versão: 1.00
-Atualizado em: 20/02/18 (dd/mm/yy)
-Autor: Rafael F. Torres
+Hangman Game (Jogo da Forca)
+Game language: pt-BR
+Version: 0.0.2
+Updated in: 2018-02-21
+Author: Rafael F. Torres
 '''
 
 # Importando módulos
@@ -19,7 +20,7 @@ cabecalho = ('''+===============================================================
 |                      \____/\____/\__, /\____/   \__,_/\__,_/  /_/    \____/_/   \___/\__,_/                          |
 |                                 /____/                                                                               |
 +======================================================================================================================+
-|       Versão: 1.00          |           Atualizado em: 20/02/18          |           Autor: Rafael F. Torres         |
+|       Versão: 0.0.2         |           Atualizado em: 21/02/18          |           Autor: Rafael F. Torres         |
 +======================================================================================================================+''')
 
 # Desenhos da forca
