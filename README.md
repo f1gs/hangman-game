@@ -37,6 +37,7 @@ After you clone this repository to your desktop, go to its directory and open:
 - Music playback.
 - Possibility to choose the level of difficulty.
 #### Changed
+- Number of lives reduced to six.
 - Minor improvements in the code.
 
 ### [0.0.2] - 2018-02-21
