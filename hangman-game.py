@@ -2,8 +2,8 @@
 Made in Python 3.6.4
 Hangman Game (Jogo da Forca)
 Game language: pt-BR
-Version: 0.0.2
-Updated in: 2018-02-21
+Version: 0.0.3
+Updated in: 2018-02-22
 Author: Rafael F. Torres
 '''
 
