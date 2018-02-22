@@ -10,24 +10,33 @@ Author: Rafael F. Torres
 # Importando módulos
 import random
 import os
+from pygame import mixer
+
+# Controle de versão
+versao = '0.0.3'
+data = '22-02-2018'
+
+# Loop de música com o pygame
+mixer.init()
+mixer.music.set_volume(0.33)  # Padrão: (0.15)
+mixer.music.load('music.xm')
+mixer.music.play(loops=-1)
 
 # Cabeçalho
-cabecalho = ('''+======================================================================================================================+
+cabecalho = ('''+----------------------------------------------------------------------------------------------------------------------+
 |                             __                         __         ______                                             |
 |                            / /___  ____ _____     ____/ /___ _   / ____/___  ______________ _                        |
 |                       __  / / __ \/ __ `/ __ \   / __  / __ `/  / /_  / __ \/ ___/ ___/ __ `/                        |
 |                      / /_/ / /_/ / /_/ / /_/ /  / /_/ / /_/ /  / __/ / /_/ / /  / /__/ /_/ /                         |
 |                      \____/\____/\__, /\____/   \__,_/\__,_/  /_/    \____/_/   \___/\__,_/                          |
 |                                 /____/                                                                               |
-+======================================================================================================================+
-|       Versão: 0.0.2         |           Atualizado em: 21/02/18          |           Autor: Rafael F. Torres         |
-+======================================================================================================================+''')
++-----------------------------+---------------------------------------------+------------------------------------------+
+|       Versão: %s         |          Atualizado em %s           |         Autor: Rafael F. Torres          |
++-----------------------------+---------------------------------------------+------------------------------------------+''' % (versao, data))
 
 # Desenhos da forca
 forca0 = ('''                                                     +---------+
                                                      |         |
-                                                               |
-                                                               |
                                                                |
                                                                |
                                                                |
@@ -40,16 +49,12 @@ forca1 = ('''                                                     +---------+
                                                                |
                                                                |
                                                                |
-                                                               |
-                                                               |
                                                     -----------+''')
 
 forca2 = ('''                                                     +---------+
                                                      |         |
                                                      0         |
                                                      |         |
-                                                               |
-                                                               |
                                                                |
                                                                |
                                                     -----------+''')
@@ -60,8 +65,6 @@ forca3 = ('''                                                     +---------+
                                                     /|         |
                                                                |
                                                                |
-                                                               |
-                                                               |
                                                     -----------+''')
 
 forca4 = ('''                                                     +---------+
@@ -70,17 +73,13 @@ forca4 = ('''                                                     +---------+
                                                     /|\        |
                                                                |
                                                                |
-                                                               |
-                                                               |
                                                     -----------+''')
 
 forca5 = ('''                                                     +---------+
                                                      |         |
                                                      0         |
                                                     /|\        |
-                                                     |         |
-                                                               |
-                                                               |
+                                                    /          |
                                                                |
                                                     -----------+''')
 
@@ -88,19 +87,7 @@ forca6 = ('''                                                     +---------+
                                                      |         |
                                                      0         |
                                                     /|\        |
-                                                     |         |
-                                                    /          |
-                                                               |
-                                                               |
-                                                    -----------+''')
-
-forca7 = ('''                                                     +---------+
-                                                     |         |
-                                                     0         |
-                                                    /|\        |
-                                                     |         |
                                                     / \        |
-                                                               |
                                                                |
                                                     -----------+''')
 
@@ -109,28 +96,72 @@ recomecar = 's'
 # Loop para recomeçar o jogo
 while recomecar == 's':
 
+    palavra = open('words.txt', 'r').readlines()
+
+    # Limpa a tela
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+    print(cabecalho)
+    print('Palavra disponível: %d' % len(palavra) if len(palavra) < 2 else 'Palavras disponíveis: %d' % len(palavra))
+
+    # Seleção da dificuldade
+    dificuldade = int(input('''
+
+
+
+                                        Selecione o nível de dificuldade:
+
+
+
+                                                [ 1 ] Fácil 
+                                                [ 2 ] Médio 
+                                                [ 3 ] Difícil 
+                                                          
+                                                          
+                                                           
+                                        Opção: '''))
+
     # Variáveis globais
     hifens = erros = acertos = 0
     tentativas = 1
-    vidas = 7
+    vidas = 6
 
-    # Busca uma palavra aleatória e a separa
+    # Busca uma palavra aleatória e a coloca em uma lista
     palavra = open('words.txt', 'r').readlines()
     computador = random.choice(palavra)
+
+    for i in range(len(computador)):
+        if computador[i] in '-':
+            hifens += 1
+
+    # Dificuldade fácil
+    if dificuldade == 1:
+        while len(computador)-hifens < 4 or len(computador)-hifens > 10:
+            computador = random.choice(palavra)
+    # Dificuldade média
+    elif dificuldade == 2:
+        while len(computador)-hifens < 11 or len(computador)-hifens > 16:
+            computador = random.choice(palavra)
+    # Dificuldade difícil
+    else:
+        while len(computador)-hifens < 17:
+            computador = random.choice(palavra)
+
+    # Formatando a palavra escolhida e colocando-a em uma lista
     computador = computador.upper().strip()
     sorteada = computador
     computador = list(computador)
-
-    # Listas para guardar letras ocultadas e para prevenir a repetição delas pelo jogador
-    mostrar = []
-    mostrar.extend(computador)
-    jogador_lista = []
 
     # Mostra o número de letras levando em consideração os hífens
     for i in range(len(computador)):
         if computador[i] in '-':
             hifens += 1
     total_letras = len(computador) - hifens
+
+    # Listas para guardar letras ocultadas e para prevenir a repetição delas pelo jogador
+    mostrar = list()
+    mostrar.extend(computador)
+    jogador_lista = list()
 
     # Ocultador de letras e revelador de hífens
     for i in range(len(mostrar)):
@@ -154,7 +185,7 @@ while recomecar == 's':
         print('Palavra disponível: %d' % len(palavra) if len(palavra) < 2 else 'Palavras disponíveis: %d' % len(palavra))
 
         # Apenas para testes
-        # print('[ TESTE ] - Computador:' % (computador))
+        # print('[ TESTE ] - Computador:' % computador)
 
         # Desenho da forca
         if erros == 0:
@@ -169,10 +200,8 @@ while recomecar == 's':
             print(forca4)
         elif erros == 5:
             print(forca5)
-        elif erros == 6:
-            print(forca6)
         else:
-            print(forca7)
+            print(forca6)
 
         print('')
 
@@ -190,7 +219,9 @@ while recomecar == 's':
         print('Erro: %d' % erros if erros < 2 else 'Erros: %d' % erros)
 
         # Entrada do jogador
-        jogador = input('\nSua vez, digite uma letra: ').upper().strip()[0]
+        jogador = input('\nSua vez, digite uma letra: ').upper().strip()
+        while len(jogador) > 1 or len(jogador) == 0:
+            jogador = input('\nSua vez, digite uma letra: ').upper().strip()
 
         # Revela letras com hífen e substitui o underline pelas letras que foram adivinhadas pelo jogador
         for i in range(len(computador)):
@@ -248,10 +279,8 @@ while recomecar == 's':
         print(forca4)
     elif erros == 5:
         print(forca5)
-    elif erros == 6:
-        print(forca6)
     else:
-        print(forca7)
+        print(forca6)
 
     print('')
 
