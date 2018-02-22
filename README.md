@@ -30,9 +30,14 @@ After you clone this repository to your desktop, go to its directory and open:
 ## Changelog
 
 ### Unreleased
-- Possibility to choose the level of difficulty.
-- Music playback.
 - Translation to English.
+
+### [0.0.3] - 2018-02-22
+#### Added
+- Music playback.
+- Possibility to choose the level of difficulty.
+#### Changed
+- Minor improvements in the code.
 
 ### [0.0.2] - 2018-02-21
 #### Fixed
