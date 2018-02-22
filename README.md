@@ -3,7 +3,7 @@ This is my version of the classic game.
 
 This game is in Portuguese (Brazil) language.
 
-![Game Screenshot](https://github.com/rftorres/hangman-game/blob/master/screenshot/hangman-game-0.0.2.PNG?raw=true)
+![Game Screenshot](https://github.com/rftorres/hangman-game/blob/master/screenshot/game.PNG?raw=true)
 
 ## Requirements
 - Python 3.6.4
