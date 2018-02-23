@@ -17,7 +17,7 @@ This game is in Portuguese (Brazil) language.
   To install (Debian\Ubuntu\Mint): `sudo apt-get install python3-pygame`
 
 ## Usage
-After you clone this repository to your desktop, go to its directory and open:
+After you clone this repository to your desktop, go to its directory and run:
 
 - For Windows
 
