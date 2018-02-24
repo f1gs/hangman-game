@@ -34,9 +34,9 @@ After you clone this repository to your desktop, go to its directory and run:
 - Translation to English.
 
 ### [0.0.4] - 2018-02-24
-### Fixed
+#### Fixed
 - Fix a bug that prints the hyphen where the letters entered by the player are.
-### Changed
+#### Changed
 - Minor improvements in the code.
 
 ### [0.0.3] - 2018-02-22
