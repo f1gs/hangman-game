@@ -192,13 +192,13 @@ while recomecar == 's':
 
     # Menu de seleção de dificuldade
     menu_dificuldade()
-    dificuldade = input('> Dificuldade desejada: ')
+    dificuldade = input('> Dificuldade desejada: ').strip()
 
     #############################################################################
     # Mudar a linha abaixo caso haja mais de três opções no menu de dificuldade #
     #############################################################################
-    while dificuldade in '4567890[^!?@#$%¨&*¹²³£¢¬ª°º()=-+qwertyuiopasdfghjklzxcvbnmáéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ:;,./\|{}~´ ] ':
-        dificuldade = input('> Dificuldade desejada: ')
+    while dificuldade in '4567890[^!?@#$%¨&*¹²³£¢¬ª°º()=-+qwertyuiopasdfghjklzxcvbnmáéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ:;,./\|{}~´] ':
+        dificuldade = input('> Dificuldade desejada: ').strip()
 
     # Dificuldade
     if dificuldade == '1':
