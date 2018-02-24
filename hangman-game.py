@@ -192,13 +192,16 @@ while recomecar == 's':
 
     # Menu de seleção de dificuldade
     menu_dificuldade()
-    dificuldade = int(input('> Dificuldade desejada: '))
+    dificuldade = input('> Dificuldade desejada: ')
+    # Mudar a linha abaixo caso haja mais de três opções no menu de difuculdade
+    while dificuldade in '4567890[^!?@#$%¨&*¹²³£¢¬ª°º()=-+qwertyuiopasdfghjklzxcvbnmáéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ:;,./\|{}~´ ] ':
+        dificuldade = input('> Dificuldade desejada: ')
 
     # Dificuldade
-    if dificuldade == 1:
+    if dificuldade == '1':
         while len(computador)-hifens < 5 or len(computador)-hifens > 10:
             computador = random.choice(palavra)
-    elif dificuldade == 2:
+    elif dificuldade == '2':
         while len(computador)-hifens < 11 or len(computador)-hifens > 16:
             computador = random.choice(palavra)
     else:
@@ -250,7 +253,7 @@ while recomecar == 's':
                 mostrar[i] = jogador[0]
 
         # Verifica acertos ou erros
-        if jogador in str('[^!?@#$%¨&*¹²³£¢¬ª°º()=-+0123456789áéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ:;,./\|{}~´ ] '):
+        if jogador in '[^!?@#$%¨&*¹²³£¢¬ª°º()=-+0123456789áéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ:;,./\|{}~´ ] ':
             tentativas += 0
             acertos += 0
             erros += 0
