@@ -167,6 +167,26 @@ def interface_jogo():
     return
 
 
+# Mensagem de vitória ou derrota
+def mensagem_resultado():
+    mensagem_vitoria = ['Parabéns, você ganhou! :-)', 'Uau! Você acertou! :-)', 'Muito bom! Você ganhou! :-)',
+                        'Continue assim, parabéns! :-)', 'Você ganhou essa rodada, parabéns! :-)',
+                        'Impressionante! Você é muito bom! :-)']
+
+    mensagem_derrota = ['Ah, que pena! A palavra era %s. :-(' % sorteada,
+                        'A palavra era %s. Boa sorte na próxima! :-(' % sorteada,
+                        'Não foi dessa vez, a palavra era %s. :-(' % sorteada,
+                        'Você perdeu, a palavra era %s. :-(' % sorteada,
+                        'A palavra era %s. :-(' % sorteada,
+                        'Puxa vida! A palavra era %s. :-(' % sorteada]
+
+    if vidas is not 0 and acertos is total_letras:
+        print('\033[32m%s\033[0m' % random.choice(mensagem_vitoria))
+    else:
+        print('\033[31m%s\033[0m' % (random.choice(mensagem_derrota)))
+    return
+
+
 # Loop para recomeçar o jogo
 recomecar = 's'
 while recomecar == 's':
@@ -294,10 +314,7 @@ while recomecar == 's':
             mostrar[i] = jogador[0]
 
     # Mensagem de vitória ou derrota
-    if vidas is not 0 and acertos is total_letras:
-        print('\033[32mParabéns! Você ganhou! :-)\033[0m')
-    else:
-        print('\033[31mA palavra era %s. Você perdeu! :-(\033[0m' % sorteada)
+    mensagem_resultado()
 
     # Recomeça o jogo
     recomecar = input('> Deseja recomeçar? [S/N]').lower().strip()
