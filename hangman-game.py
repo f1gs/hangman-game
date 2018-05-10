@@ -187,8 +187,7 @@ recomecar = 's'
 while recomecar == 's':
 
     # Variáveis globais
-    hifens = erros = acertos = 0
-    tentativas = 0
+    hifens = erros = acertos = tentativas = 0
     vidas = 6
 
     #####################
