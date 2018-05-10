@@ -1,26 +1,20 @@
 '''
 Made in Python 3.6.4
 Hangman Game (Jogo da Forca)
-Game language: pt-BR
-Version: 0.0.4
-Updated in: 2018-02-24
+Game language: PT-BR
+Version: 0.0.5
+Updated in: 2018-05-10
 Author: Rafael F. Torres
 '''
 
 # Importando módulos
-import random
+import sys
 import os
-from pygame import mixer
+import random
 
 # Controle de versão
-versao = '0.0.4'
-data = '24-02-2018'
-
-# Loop de música com o pygame
-mixer.init()
-mixer.music.set_volume(0.33)  # Volume padrão: (0.33)
-mixer.music.load('music.xm')
-mixer.music.play(loops=-1)
+versao = '0.0.5'
+data = '10-05-2018'  # (dd/mm/yyyy)
 
 
 # Limpa a tela
@@ -31,23 +25,24 @@ def limpa_tela():
 
 # Cabeçalho
 def cabecalho():
-    print('+----------------------------------------------------------------------------------------------------------------------+\033[0m')
-    print('|                             __                         __         ______                                             |\033[0m')
-    print('|                            / /___  ____ _____     ____/ /___ _   / ____/___  ______________ _                        |\033[0m')
-    print('|                       __  / / __ \/ __ `/ __ \   / __  / __ `/  / /_  / __ \/ ___/ ___/ __ `/                        |\033[0m')
-    print('|                      / /_/ / /_/ / /_/ / /_/ /  / /_/ / /_/ /  / __/ / /_/ / /  / /__/ /_/ /                         |\033[0m')
-    print('|                      \____/\____/\__, /\____/   \__,_/\__,_/  /_/    \____/_/   \___/\__,_/                          |\033[0m')
-    print('|                                 /____/                                                                               |\033[0m')
-    print('+-----------------------------+---------------------------------------------+------------------------------------------+\033[0m')
-    print('|       Versão: %s         |          Atualizado em %s           |         Autor: Rafael F. Torres          |\033[0m' % (versao, data))
-    print('+-----------------------------+---------------------------------------------+------------------------------------------+\033[0m')
+    print('+----------------------------------------------------------------------------------------------------------------------+')
+    print('|                             __                         __         ______                                             |')
+    print('|                            / /___  ____ _____     ____/ /___ _   / ____/___  ______________ _                        |')
+    print('|                       __  / / __ \/ __ `/ __ \   / __  / __ `/  / /_  / __ \/ ___/ ___/ __ `/                        |')
+    print('|                      / /_/ / /_/ / /_/ / /_/ /  / /_/ / /_/ /  / __/ / /_/ / /  / /__/ /_/ /                         |')
+    print('|                      \____/\____/\__, /\____/   \__,_/\__,_/  /_/    \____/_/   \___/\__,_/                          |')
+    print('|                                 /____/                                                                               |')
+    print('+-----------------------------+---------------------------------------------+------------------------------------------+')
+    print('|       Versão: %s         |          Atualizado em: %s          |         Autor: Rafael F. Torres          |' % (versao, data))
+    print('+-----------------------------+---------------------------------------------+------------------------------------------+')
     return
 
 
 # Palavras dispoíveis
 def palavras_disponiveis():
-    palavra = open('words.txt', 'r').readlines()
-    print('Palavra disponível: %d' % len(palavra) if len(palavra) < 2 else 'Palavras disponíveis: %d' % len(palavra))
+    # palavra = open('words.txt', 'r').readlines()  # FUNCIONA NO PYTHON 3.6 PURO
+    palavra = open(os.path.join(sys.path[0], "words.txt"), "r").readlines()  # FUNCIONA NO ANACONDA3
+    print('Palavra disponível: %i' % len(palavra) if len(palavra) < 2 else 'Palavras disponíveis: %i' % len(palavra))
     return
 
 
@@ -137,12 +132,12 @@ def separador():
 
 # Status do jogo
 def status_jogo():
-    print('Palavra com %d letra' % total_letras if total_letras < 2 else 'Palavra com %d letras' % total_letras)
+    print('Palavra com %i letra' % total_letras if total_letras < 2 else 'Palavra com %i letras' % total_letras)
     print('Letra usada: %s' % str(jogador_lista).strip('[]') if len(jogador_lista) < 2 else 'Letras usadas: %s' % str(jogador_lista).strip('[]'))
-    print('Tentativa: %d' % tentativas if tentativas < 2 else 'Tentativas: %d' % tentativas)
-    print('Vida: %d' % vidas if vidas < 2 else 'Vidas: %d' % vidas)
-    print('Acerto: %d' % acertos if acertos < 2 else 'Acertos: %d' % acertos)
-    print('Erro: %d' % erros if erros < 2 else 'Erros: %d' % erros)
+    print('Tentativa: %i' % tentativas if tentativas < 2 else 'Tentativas: %i' % tentativas)
+    print('Vida: %i' % vidas if vidas < 2 else 'Vidas: %i' % vidas)
+    print('Acerto: %i' % acertos if acertos < 2 else 'Acertos: %i' % acertos)
+    print('Erro: %i' % erros if erros < 2 else 'Erros: %i' % erros)
     return
 
 
@@ -181,9 +176,9 @@ def mensagem_resultado():
                         'Puxa vida! A palavra era %s. :-(' % sorteada]
 
     if vidas is not 0 and acertos is total_letras:
-        print('\033[32m%s\033[0m' % random.choice(mensagem_vitoria))
+        print('%s' % random.choice(mensagem_vitoria))
     else:
-        print('\033[31m%s\033[0m' % (random.choice(mensagem_derrota)))
+        print('%s' % (random.choice(mensagem_derrota)))
     return
 
 
@@ -193,7 +188,7 @@ while recomecar == 's':
 
     # Variáveis globais
     hifens = erros = acertos = 0
-    tentativas = 1
+    tentativas = 0
     vidas = 6
 
     #####################
@@ -202,8 +197,8 @@ while recomecar == 's':
     interface_inicio()
 
     # Busca uma palavra aleatória
-    # palavra = open('words.txt', 'r').readlines()
-    palavra = open('words.txt', 'r').readlines()
+    # palavra = open('words.txt', 'r').readlines()  # FUNCIONA NO PYTHON 3.6 PURO
+    palavra = open(os.path.join(sys.path[0], "words.txt"), "r").readlines()  # FUNCIONA NO ANACONDA3
     computador = random.choice(palavra)
 
     for i in range(len(computador)):
