@@ -10,12 +10,6 @@ This game is in Portuguese (Brazil) language.
 
   Download: `https://www.python.org/downloads`
 
-- Pygame 1.9.3
-
-  To install (Windows): `python3 -m pip install pygame`
-  
-  To install (Debian\Ubuntu\Mint): `sudo apt-get install python3-pygame`
-
 ## Usage
 After you clone this repository to your desktop, go to its directory and run:
 
@@ -30,9 +24,13 @@ After you clone this repository to your desktop, go to its directory and run:
 ## Changelog
 
 ### Unreleased
-- Colors.
-- Start screen.
 - Translation to English.
+
+### [0.0.5] - 2018-05-10
+#### Removed
+- Music playback.
+#### Changed
+- Minor improvements in the code.
 
 ### [0.0.4] - 2018-02-24
 #### Fixed
