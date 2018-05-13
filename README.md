@@ -26,6 +26,13 @@ After you clone this repository to your desktop, go to its directory and run:
 ### Unreleased
 - Translation to English.
 
+### [0.0.6] - 2018-05-13
+#### Fixed
+- Fix a bug that apostrophe is not showed correctly.
+- Fix a bug that in some cases the number of letters are not correctly shown. 
+#### Changed
+- Minor improvements in the code.
+
 ### [0.0.5] - 2018-05-10
 #### Removed
 - Music playback.
