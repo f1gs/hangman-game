@@ -6,7 +6,7 @@ This game is in Portuguese (Brazil) language.
 ![Game Screenshot](https://github.com/rftorres/hangman-game/blob/master/screenshot/game.PNG?raw=true)
 
 ## Requirements
-- Python 3.6.4
+- Python 3.6
 
   Download: `https://www.python.org/downloads`
 
