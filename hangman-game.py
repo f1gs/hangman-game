@@ -2,8 +2,8 @@
 Made in Python 3.6.4
 Hangman Game (Jogo da Forca)
 Game language: PT-BR
-Version: 0.0.5
-Updated in: 2018-05-10
+Version: 0.0.6
+Updated in: 2018-05-13
 Author: Rafael F. Torres
 '''
 
@@ -13,8 +13,8 @@ import os
 import random
 
 # Controle de versão
-versao = '0.0.5'
-data = '10-05-2018'  # (dd/mm/yyyy)
+versao = '0.0.6'
+data = '13-05-2018'  # (dd/mm/yyyy)
 
 
 # Limpa a tela
@@ -187,7 +187,7 @@ recomecar = 's'
 while recomecar == 's':
 
     # Variáveis globais
-    hifens = erros = acertos = tentativas = 0
+    erros = acertos = tentativas = 0
     vidas = 6
 
     #####################
@@ -200,9 +200,13 @@ while recomecar == 's':
     palavra = open(os.path.join(sys.path[0], "words.txt"), "r").readlines()  # FUNCIONA NO ANACONDA3
     computador = random.choice(palavra)
 
+    # Conta hífens e apóstrofos
+    hifens = apostrofos = 0
     for i in range(len(computador)):
         if computador[i] in '-':
             hifens += 1
+        if computador[i] in "'":
+            apostrofos += 1
 
     # Menu de seleção de dificuldade
     menu_dificuldade()
@@ -211,7 +215,7 @@ while recomecar == 's':
     #############################################################################
     # Mudar a linha abaixo caso haja mais de três opções no menu de dificuldade #
     #############################################################################
-    while dificuldade in '4567890[^!?@#$%¨&*¹²³£¢¬ª°º()=-+qwertyuiopasdfghjklzxcvbnmáéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ:;,./\|{}~´] ':
+    while dificuldade in '4567890[^!?@#$%¨&*¹²³£¢¬ª°º()=-+qwertyuiopasdfghjklzxcvbnmáéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ:;,./\|{}~´] ':  # Mudar essa linha caso opcoes de dif > 3
         dificuldade = input('> Dificuldade desejada: ').strip()
 
     # Dificuldade
@@ -230,23 +234,28 @@ while recomecar == 's':
     sorteada = computador
     computador = list(computador)
 
-    # Mostra o número de letras levando em consideração os hífens
+    # Conta (novamente) o número de letras levando em consideração os hífens e apóstrofos
+    hifens = apostrofos = 0
     for i in range(len(computador)):
         if computador[i] in '-':
             hifens += 1
-    total_letras = len(computador) - hifens
+        if computador[i] in "'":
+            apostrofos += 1
+    total_letras = len(computador) - (hifens + apostrofos)
 
     # Listas para guardar letras ocultas e para prevenir a repetição delas pelo jogador
     mostrar = list()
     mostrar.extend(computador)
     jogador_lista = list()
 
-    # Oculta letras e revela hífens
+    # Oculta letras e revela hífens e apóstrofos
     for i in range(len(mostrar)):
         mostrar[i] = '_'
     for i in range(len(computador)):
         if computador[i] in '-':
             mostrar[i] = '-'
+        if computador[i] in "'":
+            mostrar[i] = "'"
 
     # Loop até o jogador errar ou acertar tudo
     while vidas is not 0 and acertos is not total_letras:
@@ -261,10 +270,12 @@ while recomecar == 's':
         while len(jogador) > 1 or len(jogador) < 1:
             jogador = input('> Sua vez, digite uma letra: ').upper().strip()
 
-        # Revela letras com hífen e substitui o underline pelas letras que foram adivinhadas pelo jogador
+        # Revela letras com hífen e apóstrofos, substituindo o underline pelas letras que foram adivinhadas pelo jogador
         for i in range(len(computador)):
             if computador[i] in '-':
                 mostrar[i] = '-'
+            if computador[i] in "'":
+                mostrar[i] = "'"
         for i in range(len(computador)):
             if computador[i] in jogador:
                 mostrar[i] = jogador[0]
@@ -299,10 +310,12 @@ while recomecar == 's':
     #######################
     interface_jogo()
 
-    # Revela letras com hífen e substitui o underline pelas letras que foram adivinhadas pelo jogador
+    # Revela letras com hífen e apóstrofos, substituindo o underline pelas letras que foram adivinhadas pelo jogador
     for i in range(len(computador)):
         if computador[i] in '-':
             mostrar[i] = '-'
+        if computador[i] in "'":
+            mostrar[i] = "'"
     for i in range(len(computador)):
         if computador[i] in jogador:
             mostrar[i] = jogador[0]
