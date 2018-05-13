@@ -56,7 +56,7 @@ After you clone this repository to your desktop, go to its directory and run:
 
 ### [0.0.2] - 2018-02-21
 #### Fixed
-- Fix a bug that allows multiple characters to be entered at the same time (thanks to Felipe Maion).
+- Fix a bug that allows multiple characters to be entered at the same time.
 #### Changed
 - Minor improvements in the code.
 
