@@ -9,15 +9,7 @@ This is my version of the classic game.
   Download: `https://www.python.org/downloads`
 
 ## Usage
-After you clone this repository to your desktop, go to its directory and run:
-
-- For Windows
-
-  `hangman-game.bat`
-
-- For Linux
-
-  Using terminal: `python3 hangman-game.py`
+After you clone this repository to your desktop, go to its directory and run `hangman-game.py`.
 
 ## Changelog
 
