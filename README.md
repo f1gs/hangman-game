@@ -1,7 +1,7 @@
 # Hangman Game
 This is my version of the classic game.
 
-![Game Screenshot](https://github.com/rftorres/hangman-game/blob/master/screenshot/hangman.gif?raw=true)
+![Game Screenshot](https://github.com/rftorres/hangman-game/blob/master/screenshots/hangman.gif?raw=true)
 
 ## Requirements
 - Python 3.6
