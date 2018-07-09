@@ -1,327 +1,370 @@
 '''
-Made in Python 3.6.4
-Hangman Game (Jogo da Forca)
-Game language: PT-BR
-Version: 0.0.6
-Updated in: 2018-05-13
-Author: Rafael F. Torres
+Python 3.6
+Hangman Game
+Version: 0.0.7
+Update: 2018-07-09 (yyyy/mm/dd)
+Author: Rafael Torres
 '''
 
-# Importando módulos
+# imports
 import sys
 import os
 import random
 
-# Controle de versão
-versao = '0.0.6'
-data = '13-05-2018'  # (dd/mm/yyyy)
+# version
+version = '0.0.7'
+date = '2018-07-09'
 
+# align text
+align = int(77)
 
-# Limpa a tela
-def limpa_tela():
+# clean screen
+def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
     return
 
-
-# Cabeçalho
-def cabecalho():
-    print('+----------------------------------------------------------------------------------------------------------------------+')
-    print('|                             __                         __         ______                                             |')
-    print('|                            / /___  ____ _____     ____/ /___ _   / ____/___  ______________ _                        |')
-    print('|                       __  / / __ \/ __ `/ __ \   / __  / __ `/  / /_  / __ \/ ___/ ___/ __ `/                        |')
-    print('|                      / /_/ / /_/ / /_/ / /_/ /  / /_/ / /_/ /  / __/ / /_/ / /  / /__/ /_/ /                         |')
-    print('|                      \____/\____/\__, /\____/   \__,_/\__,_/  /_/    \____/_/   \___/\__,_/                          |')
-    print('|                                 /____/                                                                               |')
-    print('+-----------------------------+---------------------------------------------+------------------------------------------+')
-    print('|       Versão: %s         |          Atualizado em: %s          |         Autor: Rafael F. Torres          |' % (versao, data))
-    print('+-----------------------------+---------------------------------------------+------------------------------------------+')
+# language of words menu
+def language_words_menu():
+    # difficulty screen
+    print('''\n\n\n\n\n''')
+    print('''Select the language for the words drawn in the game:\n'''.center(align))
+    print('''[ 1 ] Portuguese                                      '''.center(align))
+    print('''[ 2 ] English                                         '''.center(align))
+    print('''\n\n\n\n\n''')
     return
 
-
-# Palavras dispoíveis
-def palavras_disponiveis():
-    # palavra = open('words.txt', 'r').readlines()  # FUNCIONA NO PYTHON 3.6 PURO
-    palavra = open(os.path.join(sys.path[0], "words.txt"), "r").readlines()  # FUNCIONA NO ANACONDA3
-    print('Palavra disponível: %i' % len(palavra) if len(palavra) < 2 else 'Palavras disponíveis: %i' % len(palavra))
+# difficulty menu
+def difficulty_menu():
+    # difficulty screen
+    print('''\n\n\n\n\n''')
+    print('''Select a difficulty:\n'''.center(align))
+    print('''[ 1 ] Easy            '''.center(align))
+    print('''[ 2 ] Medium          '''.center(align))
+    print('''[ 3 ] Hard            '''.center(align))
+    print('''\n\n\n\n\n''')
     return
 
-
-# Menu de seleção de dificuldade
-def menu_dificuldade():
-    print('\n\n\n\n\n')
-    print('Selecione o nível de dificuldade:\n'.center(110))
-    print('[ 1 ] Fácil  '.center(110))
-    print('[ 2 ] Médio  '.center(110))
-    print('[ 3 ] Difícil'.center(110))
-    print('\n\n\n\n\n')
+# header
+def header():
+    print('''+------------------------------------------------------+-----------------------+''')
+    print('''|      __  __                                          |                       |''')
+    print('''|     / / / /___ _____  ____ _____ ___  ____ _____     | Version: %s        |''' % (version))
+    print('''|    / /_/ / __ `/ __ \/ __ `/ __ `__ \/ __ `/ __ \    |                       |''')
+    print('''|   / __  / /_/ / / / / /_/ / / / / / / /_/ / / / /    | Date: %s      |''' % (date))
+    print('''|  /_/ /_/\__,_/_/ /_/\__, /_/ /_/ /_/\__,_/_/ /_/     |                       |''')
+    print('''|                    /____/                            | Author: Rafael Torres |''')
+    print('''+------------------------------------------------------+-----------------------+''')
     return
 
+# hangman drawing
+def hangman_drawing():
+    if mistakes == 0:
+        print(' +---------+'.center(align))
+        print(' |         |'.center(align))
+        print('           |'.center(align))
+        print('           |'.center(align))
+        print('           |'.center(align))
+        print('           |'.center(align))
+        print('-----------+'.center(align))
 
-# Desenhos da forca
-def desenho_forca(erros):
-    if erros == 0:
-        print(' +---------+'.center(120))
-        print(' |         |'.center(120))
-        print('           |'.center(120))
-        print('           |'.center(120))
-        print('           |'.center(120))
-        print('           |'.center(120))
-        print('-----------+'.center(120))
+    elif mistakes == 1:
+        print(' +---------+'.center(align))
+        print(' |         |'.center(align))
+        print(' 0         |'.center(align))
+        print('           |'.center(align))
+        print('           |'.center(align))
+        print('           |'.center(align))
+        print('-----------+'.center(align))
 
-    elif erros == 1:
-        print(' +---------+'.center(120))
-        print(' |         |'.center(120))
-        print(' 0         |'.center(120))
-        print('           |'.center(120))
-        print('           |'.center(120))
-        print('           |'.center(120))
-        print('-----------+'.center(120))
+    elif mistakes == 2:
+        print(' +---------+'.center(align))
+        print(' |         |'.center(align))
+        print(' 0         |'.center(align))
+        print(' |         |'.center(align))
+        print('           |'.center(align))
+        print('           |'.center(align))
+        print('-----------+'.center(align))
 
-    elif erros == 2:
-        print(' +---------+'.center(120))
-        print(' |         |'.center(120))
-        print(' 0         |'.center(120))
-        print(' |         |'.center(120))
-        print('           |'.center(120))
-        print('           |'.center(120))
-        print('-----------+'.center(120))
+    elif mistakes == 3:
+        print(' +---------+'.center(align))
+        print(' |         |'.center(align))
+        print(' 0         |'.center(align))
+        print('/|         |'.center(align))
+        print('           |'.center(align))
+        print('           |'.center(align))
+        print('-----------+'.center(align))
 
-    elif erros == 3:
-        print(' +---------+'.center(120))
-        print(' |         |'.center(120))
-        print(' 0         |'.center(120))
-        print('/|         |'.center(120))
-        print('           |'.center(120))
-        print('           |'.center(120))
-        print('-----------+'.center(120))
+    elif mistakes == 4:
+        print(' +---------+'.center(align))
+        print(' |         |'.center(align))
+        print(' 0         |'.center(align))
+        print('/|\        |'.center(align))
+        print('           |'.center(align))
+        print('           |'.center(align))
+        print('-----------+'.center(align))
 
-    elif erros == 4:
-        print(' +---------+'.center(120))
-        print(' |         |'.center(120))
-        print(' 0         |'.center(120))
-        print('/|\        |'.center(120))
-        print('           |'.center(120))
-        print('           |'.center(120))
-        print('-----------+'.center(120))
-
-    elif erros == 5:
-        print(' +---------+'.center(120))
-        print(' |         |'.center(120))
-        print(' 0         |'.center(120))
-        print('/|\        |'.center(120))
-        print('/          |'.center(120))
-        print('           |'.center(120))
-        print('-----------+'.center(120))
+    elif mistakes == 5:
+        print(' +---------+'.center(align))
+        print(' |         |'.center(align))
+        print(' 0         |'.center(align))
+        print('/|\        |'.center(align))
+        print('/          |'.center(align))
+        print('           |'.center(align))
+        print('-----------+'.center(align))
 
     else:
-        print(' +---------+'.center(120))
-        print(' |         |'.center(120))
-        print(' 0         |'.center(120))
-        print('/|\        |'.center(120))
-        print('/ \        |'.center(120))
-        print('           |'.center(120))
-        print('-----------+'.center(120))
+        print(' +---------+'.center(align))
+        print(' |         |'.center(align))
+        print(' 0         |'.center(align))
+        print('/|\        |'.center(align))
+        print('/ \        |'.center(align))
+        print('           |'.center(align))
+        print('-----------+'.center(align))
     return
 
-
-# Separador de underlines
-def separador():
-    print('   '.join(mostrar).center(120))
+# game status
+def game_status():
+    print('Word with %i letter.' % total_letters if total_letters < 2 else 'Word with %i letters.' % total_letters)
+    print('Used letter: %s.' % str(player_list).replace("[", "").replace("]", "").replace("'", "") if len(player_list) < 2 else 'Used letters: %s.' % str(player_list).replace("[", "").replace("]", "").replace("'", ""))
+    print('Attempt: %i' % attempts if attempts < 2 else 'Attempts: %i' % attempts)
+    print('Life: %i' % lives if lives < 2 else 'Lives: %i' % lives)
+    print('Hit: %i' % hits if hits < 2 else 'Hits: %i' % hits)
+    print('Mistake: %i' % mistakes if mistakes < 2 else 'Mistakes: %i' % mistakes)
     return
 
+# endgame message
+def endgame_message():
+    victory_message = [
+        "Congratulations, you won! :-)",
+        "Wow! You're right! :-)",
+        "Nice!, you won! :-)",
+        "Keep it up, congratulations! :-)",
+        "You won this round, congratulations! :-)",
+        "Impressive! You are very good! :-)",
+    ]
 
-# Status do jogo
-def status_jogo():
-    print('Palavra com %i letra' % total_letras if total_letras < 2 else 'Palavra com %i letras' % total_letras)
-    print('Letra usada: %s' % str(jogador_lista).strip('[]') if len(jogador_lista) < 2 else 'Letras usadas: %s' % str(jogador_lista).strip('[]'))
-    print('Tentativa: %i' % tentativas if tentativas < 2 else 'Tentativas: %i' % tentativas)
-    print('Vida: %i' % vidas if vidas < 2 else 'Vidas: %i' % vidas)
-    print('Acerto: %i' % acertos if acertos < 2 else 'Acertos: %i' % acertos)
-    print('Erro: %i' % erros if erros < 2 else 'Erros: %i' % erros)
+    defeat_message = [
+        "Oh, what a pity! The word was %s. :-(" % drawn_word,
+        "The word was %s. Good luck in the next round! :-(" % drawn_word,
+        "It was not this time, the word was %s. :-(" % drawn_word,
+        "You lost, the word was %s. :-(" % drawn_word,
+        "The word was %s. :-(" % drawn_word,
+        "Gee! The word was %s. :-(" % drawn_word,
+    ]
+
+    if lives != 0 and hits == total_letters:
+        print('%s' % random.choice(victory_message))
+    else:
+        print('%s' % random.choice(defeat_message))
     return
 
-
-# Interface (inicio)
-def interface_inicio():
-    limpa_tela()
-    cabecalho()
-    palavras_disponiveis()
+# underlines tab
+def underlines_tab():
+    print('   '.join(show).center(align))
     return
 
+# shows available words on the screen
+def available_words():
+    # works in python 3.6
+    # word = open("words.txt", "r").readlines()
 
-# Interface (meio do jogo)
-def interface_jogo():
-    limpa_tela()
-    cabecalho()
-    palavras_disponiveis()
-    desenho_forca(erros)
+    # works in anaconda3
+    if language_input == 1:
+        word = open(os.path.join(sys.path[0], "words_pt-br.txt"), "r").readlines()
+        language = 'Portuguese'
+    elif language_input == 2:
+        word = open(os.path.join(sys.path[0], "words_en-us.txt"), "r").readlines()
+        language = 'English'
+    return print(language,'word vailable: %i' % len(word) if len(word) < 2 else 'words available: %i' % len(word))
+
+# start interface
+def interface_start():
+    clear_screen()
+    header()
+    return
+
+# mid game interface
+def interface_game():
+    clear_screen()
+    header()
+    available_words()
+    hangman_drawing()
     print()
-    separador()
+    underlines_tab()
     print()
-    status_jogo()
+    game_status()
     return
 
+###################
+# starts the game #
+###################
+restart = 'y'
+while restart == 'y':
 
-# Mensagem de vitória ou derrota
-def mensagem_resultado():
-    mensagem_vitoria = ['Parabéns, você ganhou! :-)', 'Uau! Você acertou! :-)', 'Muito bom! Você ganhou! :-)',
-                        'Continue assim, parabéns! :-)', 'Você ganhou essa rodada, parabéns! :-)',
-                        'Impressionante! Você é muito bom! :-)']
+    # global variables
+    mistakes = hits = attempts = 0
+    lives = 6
 
-    mensagem_derrota = ['Ah, que pena! A palavra era %s. :-(' % sorteada,
-                        'A palavra era %s. Boa sorte na próxima! :-(' % sorteada,
-                        'Não foi dessa vez, a palavra era %s. :-(' % sorteada,
-                        'Você perdeu, a palavra era %s. :-(' % sorteada,
-                        'A palavra era %s. :-(' % sorteada,
-                        'Puxa vida! A palavra era %s. :-(' % sorteada]
+    # start interface and language selection for drawn words
+    interface_start()
+    language_words_menu()
 
-    if vidas is not 0 and acertos is total_letras:
-        print('%s' % random.choice(mensagem_vitoria))
-    else:
-        print('%s' % (random.choice(mensagem_derrota)))
-    return
+    # language input
+    language_input = int(input("> Select an option: "))
+    while language_input < 1 or language_input > 2:
+        language_input = int(input("> Select an option: "))
 
+    #### search a random word
+    #### works in python 3.6
+    #### word = open("words_pt-br.txt", "r").readlines()
+    # works in anaconda3
+    # portuguese
+    if language_input == 1:
+        word = open(os.path.join(sys.path[0], "words_pt-br.txt"), "r").readlines()
+        computer = random.choice(word)
+    # english
+    elif language_input == 2:
+        word = open(os.path.join(sys.path[0], "words_en-us.txt"), "r").readlines()
+        computer = random.choice(word)
 
-# Loop para recomeçar o jogo
-recomecar = 's'
-while recomecar == 's':
+    # removes spaces from drawn word
+    computer = computer.upper().strip()
+    
+    # counts hyphens and apostrophes
+    hyphens = apostrophes = total_letters = 0
+    for i in range(len(computer)):
+        if computer[i] in "-":
+            hyphens += 1
+        if computer[i] in "'":
+            apostrophes += 1
+    total_letters = len(computer) - (hyphens + apostrophes)
 
-    # Variáveis globais
-    erros = acertos = tentativas = 0
-    vidas = 6
+    # difficulty screen
+    interface_start()
+    difficulty_menu()
 
-    #####################
-    # Interface inicial #
-    #####################
-    interface_inicio()
+    # difficulty input
+    difficulty = int(input("> Select an option: "))
+    while difficulty < 1 or difficulty > 3:
+        difficulty = int(input("> Select an option: "))
+    
+    # difficulty selection
+    if difficulty == 1:
+        while total_letters < 5 or total_letters >= 10:
+            computer = random.choice(word)
+            computer = computer.upper().strip()
+            hyphens = apostrophes = total_letters = 0
+            for i in range(len(computer)):
+                if computer[i] in "-":
+                    hyphens += 1
+                if computer[i] in "'":
+                    apostrophes += 1
+            total_letters = len(computer) - (hyphens + apostrophes)
 
-    # Busca uma palavra aleatória
-    # palavra = open('words.txt', 'r').readlines()  # FUNCIONA NO PYTHON 3.6 PURO
-    palavra = open(os.path.join(sys.path[0], "words.txt"), "r").readlines()  # FUNCIONA NO ANACONDA3
-    computador = random.choice(palavra)
+    elif difficulty == 2:
+        while total_letters < 11 or total_letters >= 16:
+            computer = random.choice(word)
+            computer = computer.upper().strip()
+            hyphens = apostrophes = total_letters = 0
+            for i in range(len(computer)):
+                if computer[i] in "-":
+                    hyphens += 1
+                if computer[i] in "'":
+                    apostrophes += 1
+            total_letters = len(computer) - (hyphens + apostrophes)
 
-    # Conta hífens e apóstrofos
-    hifens = apostrofos = 0
-    for i in range(len(computador)):
-        if computador[i] in '-':
-            hifens += 1
-        if computador[i] in "'":
-            apostrofos += 1
+    elif difficulty == 3:
+        while total_letters <= 17:
+            computer = random.choice(word)
+            computer = computer.upper().strip()
+            hyphens = apostrophes = total_letters = 0
+            for i in range(len(computer)):
+                if computer[i] in "-":
+                    hyphens += 1
+                if computer[i] in "'":
+                    apostrophes += 1
+            total_letters = len(computer) - (hyphens + apostrophes)
 
-    # Menu de seleção de dificuldade
-    menu_dificuldade()
-    dificuldade = input('> Dificuldade desejada: ').strip()
+    # formats the chosen word
+    computer = computer.upper().strip()
+    drawn_word = computer
+    computer = list(computer)
 
-    #############################################################################
-    # Mudar a linha abaixo caso haja mais de três opções no menu de dificuldade #
-    #############################################################################
-    while dificuldade in '4567890[^!?@#$%¨&*¹²³£¢¬ª°º()=-+qwertyuiopasdfghjklzxcvbnmáéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ:;,./\|{}~´] ':  # Mudar essa linha caso opcoes de dif > 3
-        dificuldade = input('> Dificuldade desejada: ').strip()
+    # lists to store hidden letters and to prevent them from being repeated by the player
+    show = []
+    show.extend(computer)
+    player_list = []
 
-    # Dificuldade
-    if dificuldade == '1':
-        while len(computador)-hifens < 5 or len(computador)-hifens > 10:
-            computador = random.choice(palavra)
-    elif dificuldade == '2':
-        while len(computador)-hifens < 11 or len(computador)-hifens > 16:
-            computador = random.choice(palavra)
-    else:
-        while len(computador)-hifens < 17:
-            computador = random.choice(palavra)
+    # hide letters and show hyphens and apostrophes
+    for i in range(len(show)):
+        show[i] = "_"
+    for j in range(len(computer)):
+        if computer[j] in "-":
+            show[j] = "-"
+        if computer[j] in "'":
+            show[j] = "'"
 
-    # Formata a palavra escolhida e a coloca em uma lista
-    computador = computador.upper().strip()
-    sorteada = computador
-    computador = list(computador)
+    # repeat until the player misses or hits everything
+    while lives != 0 and hits != total_letters:
 
-    # Conta (novamente) o número de letras levando em consideração os hífens e apóstrofos
-    hifens = apostrofos = 0
-    for i in range(len(computador)):
-        if computador[i] in '-':
-            hifens += 1
-        if computador[i] in "'":
-            apostrofos += 1
-    total_letras = len(computador) - (hifens + apostrofos)
+        # mid game interface
+        interface_game()
 
-    # Listas para guardar letras ocultas e para prevenir a repetição delas pelo jogador
-    mostrar = list()
-    mostrar.extend(computador)
-    jogador_lista = list()
+        # player input
+        player = input("\n> It's your turn, type a letter: ").upper().strip()
+        while len(player) > 1 or len(player) < 1:
+            player = input("\n> It's your turn, type a letter: ").upper().strip()
+        
+        # reveals letters, hyphens and apostrophes
+        for i in range(len(computer)):
+            if computer[i] in "-":
+                show[i] = "-"
+            if computer[i] in "'":
+                show[i] = "'"
+        for j in range(len(computer)):
+            if computer[j] in player:
+                show[j] = player[0]
 
-    # Oculta letras e revela hífens e apóstrofos
-    for i in range(len(mostrar)):
-        mostrar[i] = '_'
-    for i in range(len(computador)):
-        if computador[i] in '-':
-            mostrar[i] = '-'
-        if computador[i] in "'":
-            mostrar[i] = "'"
-
-    # Loop até o jogador errar ou acertar tudo
-    while vidas is not 0 and acertos is not total_letras:
-
-        #################################
-        # Início da 'interface' do jogo #
-        #################################
-        interface_jogo()
-
-        # Entrada do jogador
-        jogador = input('\n> Sua vez, digite uma letra: ').upper().strip()
-        while len(jogador) > 1 or len(jogador) < 1:
-            jogador = input('> Sua vez, digite uma letra: ').upper().strip()
-
-        # Revela letras com hífen e apóstrofos, substituindo o underline pelas letras que foram adivinhadas pelo jogador
-        for i in range(len(computador)):
-            if computador[i] in '-':
-                mostrar[i] = '-'
-            if computador[i] in "'":
-                mostrar[i] = "'"
-        for i in range(len(computador)):
-            if computador[i] in jogador:
-                mostrar[i] = jogador[0]
-
-        # Verifica acertos ou erros
-        if jogador in '[^!?@#$%¨&*¹²³£¢¬ª°º()=-+0123456789áéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ:;,./\|{}~´ ] ':
-            tentativas += 0
-            acertos += 0
-            erros += 0
-        elif jogador in computador and jogador not in jogador_lista:
-            jogador_lista.append(jogador)
-            tentativas += 1
-            for i in range(len(computador)):
-                if jogador in computador[i]:
-                    acertos += 1
-        elif jogador in computador and jogador in jogador_lista:
-            tentativas += 0
-            acertos += 0
-            erros += 0
-        elif jogador not in computador and jogador in jogador_lista:
-            tentativas += 0
-            acertos += 0
-            erros += 0
+        # checks for hits or mistakes
+        if player in "[^!?@#$%¨&*¹²³£¢¬ª°º()=-+0123456789áéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ:;,./{}~´ ] ":
+            attempts += 0
+            hits += 0
+            mistakes += 0
+        elif player in computer and player not in player_list:
+            player_list.append(player)
+            attempts += 1
+            for i in range(len(computer)):
+                if player in computer[i]:
+                    hits += 1
+        elif player in computer and player in player_list:
+            attempts += 0
+            hits += 0
+            mistakes += 0
+        elif player not in computer and player in player_list:
+            attempts += 0
+            hits += 0
+            mistakes += 0
         else:
-            jogador_lista.append(jogador)
-            tentativas += 1
-            vidas -= 1
-            erros += 1
+            player_list.append(player)
+            attempts += 1
+            lives -= 1
+            mistakes += 1
+        
+        # endgame screen
+        interface_game()
 
-    #######################
-    # Tela de fim de jogo #
-    #######################
-    interface_jogo()
+        # reveals letters, hyphens and apostrophes (again)
+        for i in range(len(computer)):
+            if computer[i] in "-":
+                show[i] = "-"
+            if computer[i] in "'":
+                show[i] = "'"
+        for j in range(len(computer)):
+            if computer[j] in player:
+                show[j] = player[0]
 
-    # Revela letras com hífen e apóstrofos, substituindo o underline pelas letras que foram adivinhadas pelo jogador
-    for i in range(len(computador)):
-        if computador[i] in '-':
-            mostrar[i] = '-'
-        if computador[i] in "'":
-            mostrar[i] = "'"
-    for i in range(len(computador)):
-        if computador[i] in jogador:
-            mostrar[i] = jogador[0]
+        # victory or defeat message
+        endgame_message()
 
-    # Mensagem de vitória ou derrota
-    mensagem_resultado()
-
-    # Recomeça o jogo
-    recomecar = input('> Deseja recomeçar? [S/N]').lower().strip()
+    # restart the game
+    restart = input('> Do you want to start over? [Y/N]').lower().strip()

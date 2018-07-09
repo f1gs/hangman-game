@@ -1,7 +1,5 @@
-# Hangman Game (Jogo da Forca)
+# Hangman Game
 This is my version of the classic game.
-
-This game is in Portuguese (Brazil) language.
 
 ![Game Screenshot](https://github.com/rftorres/hangman-game/blob/master/screenshot/game.PNG?raw=true)
 
@@ -23,13 +21,19 @@ After you clone this repository to your desktop, go to its directory and run:
 
 ## Changelog
 
-### Unreleased
-- Translation to English.
+### [0.0.7] - 2018-07-09
+#### Added
+- Language menu.
+#### Changed
+- Language changed from Portuguese to English.
+- Improvements in the difficulty selection.
+- Header is now more compact.
+- Minor improvements in the code.
 
 ### [0.0.6] - 2018-05-13
 #### Fixed
-- Fix a bug that apostrophe is not showed correctly.
-- Fix a bug that in some cases the number of letters are not correctly shown. 
+- Fixed a bug that apostrophe is not showed correctly.
+- Fixed a bug that in some cases the number of letters are not correctly shown. 
 #### Changed
 - Minor improvements in the code.
 
@@ -41,7 +45,7 @@ After you clone this repository to your desktop, go to its directory and run:
 
 ### [0.0.4] - 2018-02-24
 #### Fixed
-- Fix a bug that prints the hyphen where the letters entered by the player are.
+- Fixed a bug that prints the hyphen where the letters entered by the player are.
 #### Changed
 - Victory and defeat messages.
 - Minor improvements in the code.
@@ -56,7 +60,7 @@ After you clone this repository to your desktop, go to its directory and run:
 
 ### [0.0.2] - 2018-02-21
 #### Fixed
-- Fix a bug that allows multiple characters to be entered at the same time.
+- Fixed a bug that allows multiple characters to be entered at the same time.
 #### Changed
 - Minor improvements in the code.
 
