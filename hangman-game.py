@@ -125,7 +125,7 @@ def hangman_drawing():
 # game status
 def game_status():
     print('Word with %i letter.' % total_letters if total_letters < 2 else 'Word with %i letters.' % total_letters)
-    print('Used letter: %s.' % str(player_list).replace("[", "").replace("]", "").replace("'", "") if len(player_list) < 2 else 'Used letters: %s.' % str(player_list).replace("[", "").replace("]", "").replace("'", ""))
+    print('Used letter: %s' % str(player_list).replace("[", "").replace("]", "").replace("'", "") if len(player_list) < 2 else 'Used letters: %s.' % str(player_list).replace("[", "").replace("]", "").replace("'", ""))
     print('Attempt: %i' % attempts if attempts < 2 else 'Attempts: %i' % attempts)
     print('Life: %i' % lives if lives < 2 else 'Lives: %i' % lives)
     print('Hit: %i' % hits if hits < 2 else 'Hits: %i' % hits)
