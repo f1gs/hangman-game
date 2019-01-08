@@ -19,7 +19,7 @@ while True:
     disp.dif_menu()
 
     input_dif = str(input("\n> Select a difficulty: "))
-    while not str(input_dif) in "123" or len(input_dif) < 1:
+    while str(input_dif) not in "123" or len(input_dif) < 1:
         msg.invalid_input()
         input_dif = str(input("> Select a difficulty: "))
 
@@ -72,7 +72,7 @@ while True:
     msg.endgame_msg(word, lives, hits, word_length)
 
     user_input = str(input("\n> Start over? [Y/N]: ")).upper().strip()
-    while not str(user_input) in "YN" or len(user_input) < 1:
+    while str(user_input) not in "YN" or len(user_input) < 1:
         msg.invalid_input()
         user_input = str(input("> Start over? [Y/N]: ")).upper().strip()
     if user_input == "N":
