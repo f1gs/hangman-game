@@ -4,7 +4,7 @@ This is my first personal project, inspired by the classic game.
 ![Game Screenshot](https://raw.githubusercontent.com/rafaelfigs/hangman-game/master/screenshot/screenshot.PNG)
 
 ## Requirements
-- Python 3.7+
+- Python 3.6+
 
   Download: `https://www.python.org/downloads`
 
