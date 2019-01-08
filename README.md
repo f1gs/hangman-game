@@ -1,17 +1,32 @@
 # Hangman Game
-This is my version of the classic game.
+This is my first personal project, inspired by the classic game.
 
-![Game Screenshot](https://github.com/rftorres/hangman-game/blob/master/screenshots/hangman.gif?raw=true)
+![Game Screenshot](https://github.com/rftorres/hangman-game/blob/master/screenshot/screenshot.png?raw=true)
 
 ## Requirements
-- Python 3.6
+- Python 3.7+
 
   Download: `https://www.python.org/downloads`
 
-## Usage
-After you clone this repository to your desktop, go to its directory and run `hangman-game.py`.
+# Usage
+After you clone this repository to your desktop, go to its directory and run `hangman.bat`.
 
 ## Changelog
+
+### [0.1.0] - 2019-01-08
+#### Added
+- Some performance improvements.
+- Beep sounds when the player wins or loses.
+
+#### Changed
+- Code was rewritten and rearranged.
+- Major improvements in the code.
+
+#### Fixed
+- Fixed minor bugs.
+
+#### Removed
+- Portuguese words.
 
 ### [0.0.7] - 2018-07-09
 #### Added
