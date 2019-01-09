@@ -1,20 +1,20 @@
 import random
 
+path = "words/en_us.txt"
 
-def get_file():
-    path = "words/en_us.txt"
+
+def get_words_number():
     file = open(path, "r").readlines()
     return len(file)
 
 
 def get_word():
-    path = "words/en_us.txt"
     file = open(path, "r").readlines()
     word = random.choice(file)
     return word.upper().strip()
 
 
-def real_length_word(word):
+def real_word_length(word):
     hyphens = apostrophes = spaces = 0
     for i in range(len(word)):
         if word[i] in "-":
@@ -26,12 +26,12 @@ def real_length_word(word):
     return len(word) - (hyphens + apostrophes + spaces)
 
 
-def dif_word(min, max):
+def dif_word(min_value, max_value):
     word = get_word()
-    word_size = real_length_word(word)
-    while word_size < min or word_size > max:
+    word_size = real_word_length(word)
+    while word_size < min_value or word_size > max_value:
         word = get_word()
-        word_size = real_length_word(word)
+        word_size = real_word_length(word)
     return word
 
 

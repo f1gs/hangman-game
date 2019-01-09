@@ -11,8 +11,8 @@ def title():
     print("+==================+================+=======================+")
 
 
-def avail_words(number_words):
-    print(f"Word available: {number_words}" if number_words < 2 else f"Words available: {number_words}\n")
+def avail_words(words_number):
+    print(f"Word available: {words_number}" if words_number < 2 else f"Words available: {words_number}\n")
 
 
 def dif_menu():

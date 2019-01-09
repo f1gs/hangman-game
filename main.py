@@ -4,7 +4,7 @@ from ui import msg
 from ui import dwg
 
 while True:
-    number_words = func.get_file()
+    words_number = func.get_words_number()
     mistakes = hits = attempts = 0
     lives = 6
     word = ()
@@ -13,7 +13,7 @@ while True:
 
     disp.clr_sc()
     disp.title()
-    disp.avail_words(number_words)
+    disp.avail_words(words_number)
     disp.dif_menu()
 
     input_dif = str(input("\n> Select a difficulty: "))
@@ -34,12 +34,12 @@ while True:
         word = func.dif_word(17, 42)
 
     letter_display.extend(word)
-    word_length = func.real_length_word(word)
+    word_length = func.real_word_length(word)
 
     while lives > 0 and hits < word_length:
         disp.clr_sc()
         disp.title()
-        disp.avail_words(number_words)
+        disp.avail_words(words_number)
         dwg.hang(mistakes)
         func.hide_reveal_letters(word, letter_used)
         disp.game_status(word_length, letter_used, attempts, lives, hits, mistakes)
@@ -63,7 +63,7 @@ while True:
     # end game screen
     disp.clr_sc()
     disp.title()
-    disp.avail_words(number_words)
+    disp.avail_words(words_number)
     dwg.hang(mistakes)
     func.hide_reveal_letters(word, letter_used)
     disp.game_status(word_length, letter_used, attempts, lives, hits, mistakes)
