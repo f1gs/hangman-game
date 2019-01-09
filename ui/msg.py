@@ -13,7 +13,7 @@ def endgame_msg(word, lives, hits, word_length):
     victory_message = [
         "Congratulations, you won! :-)",
         "Wow! You're right! :-)",
-        "Nice!, you won! :-)",
+        "Nice! You won! :-)",
         "Keep it up, congratulations! :-)",
         "You won this round, congratulations! :-)",
         "Impressive! You are very good! :-)",

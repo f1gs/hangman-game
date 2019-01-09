@@ -15,18 +15,28 @@ def get_word():
 
 
 def real_word_length(word):
-    hyphens = apostrophes = spaces = 0
+    not_alpha = 0
     for i in range(len(word)):
-        if word[i] in "-":
-            hyphens += 1
-        if word[i] in "'":
-            apostrophes += 1
-        if word[i] in " ":
-            spaces += 1
-    return len(word) - (hyphens + apostrophes + spaces)
+        if not str(word[i]).isalpha():
+            not_alpha += 1
+    return len(word) - not_alpha
 
 
-def dif_word(min_value, max_value):
+def sel_dif_word(user_input):
+    if user_input == "1":
+        word = get_dif_word(5, 10)
+        return word
+
+    elif user_input == "2":
+        word = get_dif_word(11, 16)
+        return word
+
+    elif user_input == "3":
+        word = get_dif_word(17, 42)
+        return word
+
+
+def get_dif_word(min_value, max_value):
     word = get_word()
     word_size = real_word_length(word)
     while word_size < min_value or word_size > max_value:
@@ -49,18 +59,18 @@ def hide_reveal_letters(word, letter_player):
     return print("\n", str(" ").join(display_output).center(74), "\n")
 
 
-def game_checker(word, letter_input, letter_used):
+def game_checker(word, user_input, letter_used):
     mistakes = hits = attempts = lives = 0
-    if letter_input in word and letter_input not in letter_used:
+    if user_input in word and user_input not in letter_used:
         attempts += 1
         for i in range(len(word)):
-            if letter_input in word[i]:
+            if user_input in word[i]:
                 hits += 1
-    elif letter_input in word and letter_input in letter_used:
+    elif user_input in word and user_input in letter_used:
         attempts += 0
         hits += 0
         mistakes += 0
-    elif letter_input not in word and letter_input in letter_used:
+    elif user_input not in word and user_input in letter_used:
         attempts += 0
         hits += 0
         mistakes += 0
