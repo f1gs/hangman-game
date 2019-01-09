@@ -16,43 +16,17 @@ def avail_words(number_words):
 
 
 def dif_menu():
-    print("Select a difficulty:\n--------------------\n\n[ 1 ] Easy\n[ 2 ] Medium\n[ 3 ] Hard")
+    print("Select a difficulty:")
+    print("--------------------\n")
+    print("[ 1 ] Easy")
+    print("[ 2 ] Medium")
+    print("[ 3 ] Hard")
 
 
 def game_status(word_length, letter_used, attempts, lives, hits, mistakes):
-    if word_length < 1:
-        print(f"Word with none letter.")
-    elif word_length == 1:
-        print(f"Word with {word_length} letter.")
-    else:
-        print(f"Word with {word_length} letters.")
-    if len(letter_used) < 1:
-        print(f"Used letter: none")
-    elif len(letter_used) == 1:
-        print("Used letter: %s." % str(letter_used).replace("[", "").replace("]", "").replace("'", ""))
-    else:
-        print("Used letters: %s." % str(letter_used).replace("[", "").replace("]", "").replace("'", ""))
-    if attempts < 1:
-        print(f"Attempt: none")
-    elif attempts == 1:
-        print(f"Attempt: {attempts}")
-    else:
-        print(f"Attempts: {attempts}")
-    if lives < 1:
-        print(f"Life: none")
-    elif lives == 1:
-        print(f"Life: {lives}")
-    else:
-        print(f"Lives: {lives}")
-    if hits < 1:
-        print(f"Hit: none")
-    elif hits == 1:
-        print(f"Hit: {hits}")
-    else:
-        print(f"Hits: {hits}")
-    if mistakes < 1:
-        print(f"Mistake: none")
-    elif lives == 1:
-        print(f"Mistake: {mistakes}")
-    else:
-        print(f"Mistakes: {mistakes}")
+    print(f"Word with {word_length} letter" if word_length < 2 else f"Word with {word_length} letters")
+    print(f"Used letter: {str().join(letter_used)}" if len(letter_used) < 2 else f"Used letters: {str(', ').join(letter_used)}.")
+    print(f"Attempt: {attempts}" if attempts < 2 else f"Attempts: {attempts}")
+    print(f"Life: {lives}" if lives < 2 else f"Lives: {lives}")
+    print(f"Hit: {hits}" if hits < 2 else f"Hits: {hits}")
+    print(f"Mistake {mistakes}" if mistakes < 2 else f"Mistakes: {mistakes}")

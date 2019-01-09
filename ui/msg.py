@@ -27,7 +27,5 @@ def endgame_msg(word, lives, hits, word_length):
         f"The word was {word}. :-(",
         f"Gee! The word was {word}. :-(",
     ]
-    if lives > 0 and hits == word_length:
-        print(f"\a\a\a\n{random.choice(victory_message)}")
-    else:
-        print(f"\a\n{random.choice(defeat_message)}")
+    print(f"\a\a\a\n{random.choice(victory_message)}" if lives > 0 and hits == word_length else
+          f"\a\n{random.choice(defeat_message)}")
