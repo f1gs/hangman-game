@@ -29,7 +29,7 @@ def real_length_word(word):
 def dif_word(min, max):
     word = get_word()
     word_size = real_length_word(word)
-    while word_size < min or word_size >= max:
+    while word_size < min or word_size > max:
         word = get_word()
         word_size = real_length_word(word)
     return word

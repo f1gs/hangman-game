@@ -5,9 +5,7 @@ from ui import dwg
 
 while True:
     number_words = func.get_file()
-    mistakes = 0
-    hits = 0
-    attempts = 0
+    mistakes = hits = attempts = 0
     lives = 6
     word = ()
     letter_display = []
