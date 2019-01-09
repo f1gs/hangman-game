@@ -64,5 +64,6 @@ while True:
     while str(user_input) not in "YN" or len(user_input) < 1:
         msg.invalid_input()
         user_input = str(input("> Start over? [Y/N]: ")).upper().strip()
+
     if user_input == "N":
         break
