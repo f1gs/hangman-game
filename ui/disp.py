@@ -39,9 +39,9 @@ def game_status(word_length, letter_used, attempts, lives, hits, mistakes):
     else:
         print(f"Attempts: {attempts}")
     if lives < 1:
-        print(f"Live: none")
+        print(f"Life: none")
     elif lives == 1:
-        print(f"Live: {lives}")
+        print(f"Life: {lives}")
     else:
         print(f"Lives: {lives}")
     if hits < 1:
