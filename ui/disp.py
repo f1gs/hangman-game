@@ -29,4 +29,4 @@ def game_status(word_length, letter_used, attempts, lives, hits, mistakes):
     print(f"Attempt: {attempts}" if attempts < 2 else f"Attempts: {attempts}")
     print(f"Life: {lives}" if lives < 2 else f"Lives: {lives}")
     print(f"Hit: {hits}" if hits < 2 else f"Hits: {hits}")
-    print(f"Mistake {mistakes}" if mistakes < 2 else f"Mistakes: {mistakes}")
+    print(f"Mistake: {mistakes}" if mistakes < 2 else f"Mistakes: {mistakes}")
