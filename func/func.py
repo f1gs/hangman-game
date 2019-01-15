@@ -48,11 +48,9 @@ def get_dif_word(min_value, max_value):
 def hide_reveal_letters(word, letter_player):
     display_output = []
     display_output.extend(word)
-    # hide only letters
     for i in range(len(display_output)):
         if str(display_output[i]).isalpha():
             display_output[i] = "_"
-        # reveal letters
         for j in range(len(letter_player)):
             if word[i] in letter_player[j]:
                 display_output[i] = letter_player[j]
@@ -66,16 +64,8 @@ def game_checker(word, user_input, letter_used):
         for i in range(len(word)):
             if user_input in word[i]:
                 hits += 1
-    elif user_input in word and user_input in letter_used:
-        attempts += 0
-        hits += 0
-        mistakes += 0
-    elif user_input not in word and user_input in letter_used:
-        attempts += 0
-        hits += 0
-        mistakes += 0
-    else:
+    elif user_input not in word and user_input not in letter_used:
+        mistakes += 1
         attempts += 1
         lives -= 1
-        mistakes += 1
     return mistakes, hits, attempts, lives
