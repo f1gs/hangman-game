@@ -7,7 +7,7 @@ def clr_sc():
 
 def title():
     print("+==================+================+=======================+")
-    print("| HANGMAN THE GAME | Version: 0.1.0 | Author: Rafael Torres |")
+    print("| HANGMAN THE GAME | Version: 0.1.1 | Author: Rafael Torres |")
     print("+==================+================+=======================+")
 
 

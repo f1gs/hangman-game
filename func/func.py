@@ -1,17 +1,14 @@
+import os
 import random
-
-path = "words/en_us.txt"
 
 
 def get_words_number():
-    file = open(path, "r").readlines()
-    return len(file)
-
-
-def get_word():
-    file = open(path, "r").readlines()
-    word = random.choice(file)
-    return word.upper().strip()
+    number = 0
+    for file in os.listdir(os.getcwd() + "\\words"):
+        if file.endswith(".txt"):
+            words_file = open(os.path.join(os.getcwd() + "\\words", file), "r").readlines()
+            number += len(words_file)
+    return number
 
 
 def real_word_length(word):
@@ -22,27 +19,29 @@ def real_word_length(word):
     return len(word) - not_alpha
 
 
-def sel_dif_word(user_input):
+def get_word(user_input):
+    min_value = 0
+    max_value = 0
+    file_path = ""
     if user_input == "1":
-        word = get_dif_word(5, 10)
-        return word
-
+        min_value = 5
+        max_value = 10
+        file_path = os.path.join(os.getcwd() + "\\words\\easy.txt")
     elif user_input == "2":
-        word = get_dif_word(11, 16)
-        return word
-
+        min_value = 11
+        max_value = 16
+        file_path = os.path.join(os.getcwd() + "\\words\\medium.txt")
     elif user_input == "3":
-        word = get_dif_word(17, 42)
-        return word
-
-
-def get_dif_word(min_value, max_value):
-    word = get_word()
+        min_value = 17
+        max_value = 42
+        file_path = os.path.join(os.getcwd() + "\\words\\hard.txt")
+    file = open(file_path, "r").readlines()
+    word = random.choice(file)
     word_size = real_word_length(word)
     while word_size < min_value or word_size > max_value:
-        word = get_word()
+        word = random.choice(file)
         word_size = real_word_length(word)
-    return word
+    return word.upper().strip()
 
 
 def hide_reveal_letters(word, letter_player):

@@ -5,13 +5,21 @@ This is my first personal project, inspired by the classic game.
 
 ## Requirements
 - Python 3.6+
-
-  Download: `https://www.python.org/downloads`
+Download: `https://www.python.org/downloads`
 
 # Usage
-After you clone this repository to your desktop, go to its directory and run `hangman.bat`.
+After you clone this repository to your desktop, go to its directory and run `main.py`.
 
 ## Changelog
+
+### [0.1.1] - 2019-01-19
+#### Added
+- A tool that allows you to optimize the search time of words randomly in a text file (especially for the hard difficulty).
+To use this tool, go to `words` folder and make sure there is a `.txt` file in this folder and run `words_optimization_tool.py`. Three files will be created, containing words for each difficulty.
+- Huge performance gains for word search. In worst case scenarios, the search time would last up to 15 seconds. Now the searches are instant.
+
+#### Changed
+- Small part of code was rewritten and improved.
 
 ### [0.1.0] - 2019-01-08
 #### Added
