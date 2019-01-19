@@ -5,10 +5,9 @@ This is my first personal project, inspired by the classic game.
 
 ## Requirements
 * Python 3.6+
+    * Download: https://www.python.org/downloads
 
-    Download: https://www.python.org/downloads
-
-# Usage
+## Usage
 After you clone this repository to your desktop, go to its directory and run `main.py`.
 
 ## Changelog
