@@ -19,7 +19,6 @@ for file in os.listdir(os.getcwd()):
         print("Path:", os.path.join(os.getcwd(), file))
 
         user_input = input("Start optimization? [Y/N]: ").upper().strip()
-
         if user_input == "Y":
             words_file = open(os.path.join(os.getcwd(), file), "r").readlines()
             os.rename(file, file + ".old")
@@ -34,8 +33,10 @@ if file_found:
     for word in words_file:
         if 5 < func.real_word_length(word) < 10:
             easy_file.write(word)
+
         elif 11 < func.real_word_length(word) < 16:
             medium_file.write(word)
+
         elif 17 < func.real_word_length(word) < 42:
             hard_file.write(word)
 
