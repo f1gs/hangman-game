@@ -53,7 +53,7 @@ def get_word(user_input):
     return word.upper().strip()
 
 
-def hide_reveal_letters(word, letter_player):
+def hide_reveal_letters(word, letter_used):
     display_output = []
     display_output.extend(word)
 
@@ -61,9 +61,9 @@ def hide_reveal_letters(word, letter_player):
         if str(display_output[i]).isalpha():
             display_output[i] = "_"
 
-        for j in range(len(letter_player)):
-            if word[i] in letter_player[j]:
-                display_output[i] = letter_player[j]
+        for j in range(len(letter_used)):
+            if word[i] in letter_used[j]:
+                display_output[i] = letter_used[j]
 
     return print("\n", str(" ").join(display_output).center(74), "\n")
 
