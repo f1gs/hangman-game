@@ -1,4 +1,4 @@
-# Hangman Game
+# Hangman
 This is my first personal project, inspired by the classic game.
 
 ![Game Screenshot](https://raw.githubusercontent.com/rafaelfigs/hangman-game/master/screenshot/screenshot.PNG)
