@@ -14,7 +14,7 @@
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="64">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -26,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/words/words_optimization_tool.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="604">
-              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="e#142#151#0" expanded="true" />
               </folding>
@@ -49,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/disp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="80">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -58,7 +58,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/dwg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
+            <state relative-caret-position="1008">
               <caret line="63" selection-start-line="63" selection-end-line="63" />
             </state>
           </provider>
@@ -114,40 +114,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="hangman-game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hangman-game" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hangman-game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hangman-game" type="462c0819:PsiDirectoryNode" />
-              <item name="func" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hangman-game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hangman-game" type="462c0819:PsiDirectoryNode" />
-              <item name="screenshot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hangman-game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hangman-game" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hangman-game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hangman-game" type="462c0819:PsiDirectoryNode" />
-              <item name="words" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -326,7 +293,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ui/dwg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
+        <state relative-caret-position="1008">
           <caret line="63" selection-start-line="63" selection-end-line="63" />
         </state>
       </provider>
@@ -335,6 +302,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
           <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/disp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -351,24 +325,17 @@
     <entry file="file://$PROJECT_DIR$/words/words_optimization_tool.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="604">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="e#142#151#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/disp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

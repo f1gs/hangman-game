@@ -6,9 +6,9 @@ def clr_sc():
 
 
 def title():
-    print("+==================+================+=======================+")
-    print("| HANGMAN THE GAME | Version: 0.1.1 | Author: Rafael Torres |")
-    print("+==================+================+=======================+")
+    print("+=========+=================+=======================+")
+    print("| HANGMAN | Version: 0.1.1a | Author: Rafael Torres |")
+    print("+=========+=================+=======================+")
 
 
 def avail_words(words_number):
