@@ -6,19 +6,19 @@ less computational effort to get a word in the text file randomly.
 import os
 from func import func
 
-words_file = ()
+words_file = []
 file_found = False
 
-print("+=========================+")
-print("| Words Optimization Tool |")
-print("+=========================+")
+print("+===================+")
+print("| File creator tool |")
+print("+===================+")
 
 for file in os.listdir(os.getcwd()):
     if file.endswith(".txt"):
         print(f"\nFile \"{file}\" found!")
         print("Path:", os.path.join(os.getcwd(), file))
 
-        user_input = input("Start optimization? [Y/N]: ").upper().strip()
+        user_input = input("Start creating the files? [Y/N]: ").upper().strip()
         if user_input == "Y":
             words_file = open(os.path.join(os.getcwd(), file), "r").readlines()
             os.rename(file, file + ".old")
@@ -44,7 +44,7 @@ if file_found:
     medium_file.close()
     hard_file.close()
 
-    print("\nOptimization held successfully.")
+    print("\nFiles created successfully.")
 
 else:
-    print("\nNo files have been optimized.")
+    print("\nNo files have been created.")

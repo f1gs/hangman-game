@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\f1gs\Documents\GitHub\hangman-game\venv"
+$env:VIRTUAL_ENV="C:\Users\f1gs\Documents\hangman-game\venv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

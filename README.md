@@ -12,10 +12,14 @@ After you clone this repository to your desktop, go to its directory and run `ma
 
 ## Changelog
 
+### [0.1.2] - 2019-01-27
+#### Changed
+* Part of code was rewritten.
+
 ### [0.1.1] - 2019-01-19
 #### Added
-* A tool that allows you to optimize the search time of words randomly in a text file (especially for the hard difficulty).
-    * To use this tool, go to `words` folder and make sure there is a `.txt` file in this folder and run `words_optimization_tool.py`. Three files will be created, containing words for each difficulty.
+* A tool that optimize the search time of words randomly in a text file (especially for the hard difficulty).
+    * To use this tool, go to `words` folder and make sure there is a `.txt` file in this folder and run `file_creation_tool.py`. Three files will be created, containing words for each difficulty.
 * Huge performance gains for word search. In worst case scenarios, the search time would last up to 15 seconds. Now the searches are instant.
 #### Changed
 * Small part of code was rewritten and improved.
