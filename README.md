@@ -1,7 +1,7 @@
 # Hangman
 This is my first personal project, inspired by the classic game.
 
-![Game Screenshot](https://raw.githubusercontent.com/rafaelfigs/hangman-game/master/screenshot/screenshot.PNG)
+![Game Screenshot](https://github.com/f1gs/hangman-game/blob/master/screenshots/hangman_game.PNG) "![Files Creator Tool] (https://github.com/f1gs/hangman-game/blob/master/screenshots/files_creator_tool.PNG)
 
 ## Requirements
 * Python 3.6+
